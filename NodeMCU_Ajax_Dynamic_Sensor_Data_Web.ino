@@ -3,8 +3,8 @@
 #include <ESP8266WebServer.h>
 
 // Replace with your network credentials
-const char* ssid = "ZiggoC6C6A6C";
-const char* password = "3YjjjrzteyFk";
+const char* ssid = "WIFI_NAME";
+const char* password = "WIFI_PASS";
 ESP8266WebServer server(80);   //instantiate server at port 80 (http port)
 
 String page = "";
@@ -33,7 +33,7 @@ void setup(void) {
   Serial.println(WiFi.localIP());
   server.on("/data.txt", []() {
     text = (String)data;
-    server.send(200, "text/html", text);
+    server.send(200, "text/html", text);    //Stores a text file with the sensor reading which is later used to update the value on the web page.
   });
   server.on("/", []() {
     page = "<!DOCTYPE html><html>";
